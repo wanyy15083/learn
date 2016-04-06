@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-24 16:36:49 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.frotly.yycg.business.analyze.entity.Yybusiness" table="YYBUSINESS" schema="FROTLY">
+        <comment>医院交易明细表(用于交易查询统计)</comment>
+        <id name="id" type="string">
+            <column name="ID" length="32" />
+            <generator class="uuid" />
+        </id>
+        <many-to-one name="useryy" class="com.frotly.yycg.business.system.entity.Useryy" fetch="join">
+            <column name="USERYYID" length="64" not-null="true"></column>
+        </many-to-one>
+        <many-to-one name="ypxx" class="com.frotly.yycg.business.ypml.entity.Ypxx" fetch="join">
+            <column name="YPXXID" length="32" not-null="true"></column>
+        </many-to-one>
+        <many-to-one name="usergys" class="com.frotly.yycg.business.system.entity.Usergys" fetch="join">
+            <column name="USERGYSID" length="64" not-null="true"></column>
+        </many-to-one>
+        <many-to-one name="dictinfo" class="com.frotly.yycg.business.system.entity.Dictinfo" fetch="join">
+            <column name="CGZT" length="32" not-null="true"></column>
+        </many-to-one>
+        <many-to-one name="yycgd" class="com.frotly.yycg.business.cgd.entity.Yycgd" fetch="join">
+            <column name="YYCGDID" precision="22" scale="0" not-null="true"></column>
+        </many-to-one>
+        <property name="zbjg" type="java.lang.Float">
+            <column name="ZBJG" precision="126" scale="0" not-null="true"></column>
+        </property>
+        <property name="jyjg" type="java.lang.Float">
+            <column name="JYJG" precision="126" scale="0" not-null="true"></column>
+        </property>
+        <property name="cgl" type="java.lang.Integer">
+            <column name="CGL" precision="22" scale="0" not-null="true"></column>
+        </property>
+        <property name="cgje" type="java.lang.Float">
+            <column name="CGJE" precision="126" scale="0" not-null="true"></column>
+        </property>
+        <property name="rkl" type="java.lang.Integer">
+            <column name="RKL" precision="22" scale="0"></column>
+        </property>
+        <property name="rkje" type="java.lang.Float">
+            <column name="RKJE" precision="126" scale="0"></column>
+        </property>
+        <property name="rkdh" type="string">
+            <column name="RKDH" length="32"></column>
+        </property>
+        <property name="ypph" type="string">
+            <column name="YPPH" length="32"></column>
+        </property>
+        <property name="ypyxq" type="java.lang.Float">
+            <column name="YPYXQ" precision="126" scale="0"></column>
+        </property>
+        <property name="rktime" type="java.util.Date">
+            <column name="RKTIME" length="7"></column>
+        </property>
+        <property name="fhtime" type="java.util.Date">
+            <column name="FHTIME" length="7"></column>
+        </property>
+        <property name="yythdid" type="string">
+            <column name="YYTHDID" length="32"></column>
+        </property>
+        <property name="thl" type="java.lang.Integer">
+            <column name="THL" precision="22" scale="0"></column>
+        </property>
+        <property name="thje" type="java.lang.Float">
+            <column name="THJE" precision="126" scale="0"></column>
+        </property>
+        <property name="thzt" type="string">
+            <column name="THZT" length="32"></column>
+        </property>
+        <property name="thyy" type="string">
+            <column name="THYY" length="100"></column>
+        </property>
+        <property name="yyjsdid" type="string">
+            <column name="YYJSDID" length="32"></column>
+        </property>
+        <property name="jsl" type="java.lang.Integer">
+            <column name="JSL" precision="22" scale="0"></column>
+        </property>
+        <property name="jsje" type="java.lang.Float">
+            <column name="JSJE" precision="126" scale="0"></column>
+        </property>
+        <property name="jszt" type="string">
+            <column name="JSZT" length="32"></column>
+        </property>
+        <property name="vchar1" type="string">
+            <column name="VCHAR1" length="64" />
+        </property>
+        <property name="vchar2" type="string">
+            <column name="VCHAR2" length="64" />
+        </property>
+        <property name="vchar3" type="string">
+            <column name="VCHAR3" length="64" />
+        </property>
+        <property name="tjtime" type="java.util.Date">
+            <column name="TJTIME" length="7" not-null="true"></column>
+        </property>
+    </class>
+</hibernate-mapping>

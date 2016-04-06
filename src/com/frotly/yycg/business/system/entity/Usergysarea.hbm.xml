@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-4 21:43:11 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.frotly.yycg.business.system.entity.Usergysarea" table="USERGYSAREA" schema="FROTLY">
+        <comment>供货商供货地区</comment>
+        <id name="areaid" type="string">
+            <column name="AREAID" length="32" />
+            <generator class="foreign">
+                <param name="property">sysArea</param>
+            </generator>
+        </id>
+        <one-to-one name="sysArea" class="com.frotly.yycg.business.system.entity.SysArea" constrained="true"></one-to-one>
+        <many-to-one name="usergys" class="com.frotly.yycg.business.system.entity.Usergys" fetch="select">
+            <column name="USERGYSID" length="64" not-null="true" />
+        </many-to-one>
+        <property name="vchar1" type="string">
+            <column name="VCHAR1" length="64" />
+        </property>
+        <property name="vchar2" type="string">
+            <column name="VCHAR2" length="64" />
+        </property>
+        <property name="vchar3" type="string">
+            <column name="VCHAR3" length="64" />
+        </property>
+    </class>
+</hibernate-mapping>

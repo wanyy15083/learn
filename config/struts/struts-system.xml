@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="system" namespace="/sys/user" extends="base">
+		<action name="*" class="userAction" method="{1}">
+			<result name="getUser">/WEB-INF/jsp/business/system/getuser.jsp</result>
+			<result name="queryuser">/WEB-INF/jsp/business/system/queryuser.jsp</result>
+			<result name="queryuser_result" type="json">
+				<param name="root">processResult</param>
+				<param name="includeProperties">total,rows\[\d+\]\.id,rows\[\d+\]\.usercode,rows\[\d+\]\.username,rows\[\d+\]\.dictinfoByGroupid\.info,
+					rows\[\d+\]\.dictinfoByGroupid\.dictcode,rows\[\d+\]\.userjd\.mc,rows\[\d+\]\.useryy\.mc,rows\[\d+\]\.usergys\.mc,rows\[\d+\]\.dictinfoByUserstate\.info</param>
+			</result>
+			<result name="adduser">/WEB-INF/jsp/business/system/adduser.jsp</result>
+			<!-- <result name="addusersubmit" type="json">
+				<param name="root">processResult</param>
+			</result>
+			<result name="deleteuser" type="json">
+				<param name="root">processResult</param>
+			</result> -->
+		</action>
+	</package>
+	<package name="auth" namespace="/sys/auth" extends="base">
+		<action name="*" class="authAction" method="{1}">
+			<result name="rolelist">/WEB-INF/jsp/business/system/rolelist.jsp</result>
+			<!-- <result name="rolelist_result" type="json">
+				<param name="root">processResult</param>
+			</result> -->
+			<result name="roleauth">/WEB-INF/jsp/business/system/roleauth.jsp</result>
+			<!-- 需要转json -->
+			<result name="permissionall" type="json">
+				<param name="root">sysPermissionList</param>
+			</result>
+			<!-- <result name="roleauthsubmit" type="json">
+				<param name="root">processResult</param>
+			</result> -->
+		</action>
+	</package>
+	<package name="flow" namespace="/sys/flow" extends="base">
+		<action name="*" class="flowAction" method="{1}">
+			<result name="processdeflist">/WEB-INF/jsp/business/system/flow/processdeflist.jsp</result>
+			<result name="processdeflist_result" type="json">
+				<param name="root">processResult</param>
+				<param name="includeProperties">total,rows\[\d+\]\.id,rows\[\d+\]\.deploymentId,rows\[\d+\]\.name,rows\[\d+\]\.key,rows\[\d+\]\.version</param>
+			</result>
+			<result name="deployprocess">/WEB-INF/jsp/business/system/flow/deployprocess.jsp</result>
+		</action>
+	</package>
+</struts>

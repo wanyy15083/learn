@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 配置常量 -->
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="false" />
+	<!-- ui主题 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<!-- chain方式拷贝到error及message到下一个执行链 -->
+	<constant name="struts.xwork.chaining.copyErrors" value="true" />
+	<constant name="struts.xwork.chaining.copyFieldErrors" value="true" />
+	<constant name="struts.xwork.chaining.copyMessages" value="true" />
+	<constant name="struts.action.extension" value="action" />
+	<!-- 修改struts2文件上传的大小，默认2097152 -->
+	<constant name="struts.multipart.maxSize" value="20971520"></constant>
+	
+	
+	<package name="base" namespace="/" extends="json-default">
+	
+		<!-- 配置异常拦截器 -->
+		<interceptors>
+			<interceptor name="exceptionInterceptor" class="com.frotly.yycg.base.web.interceptor.ExceptionInterceptor"></interceptor>
+			<interceptor name="loginInterceptor" class="com.frotly.yycg.base.auth.filter.LoginInterceptor"></interceptor>
+			<interceptor name="permissionInterceptor" class="com.frotly.yycg.base.auth.filter.PermissionInterceptor"></interceptor>
+			<interceptor-stack name="costumStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="exceptionInterceptor" />
+				<!-- <interceptor-ref name="loginInterceptor" /> -->
+			<!-- 	<interceptor-ref name="permissionInterceptor" /> -->
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="costumStack" />
+		
+		<!-- 配置公用result -->
+		<global-results>
+			<result name="error_json" type="json">
+				<param name="root">processResult</param>
+			</result>
+			<result name="error_jsp">/WEB-INF/jsp/base/error.jsp</result>
+			<result name="tologin">/WEB-INF/jsp/base/login.jsp</result>
+			<result name="refuse">/refuse.jsp</result>
+			<result name="processResult" type="json">
+				<param name="root">processResult</param>
+			</result>
+		</global-results>
+	
+		<action name="*" class="firstAction" method="{1}">
+			<result name="first">/WEB-INF/jsp/base/first.jsp</result>
+			<result name="welcome">/WEB-INF/jsp/base/welcome.jsp</result>
+			<result name="menu" type="json">
+				<param name="root">menu</param>
+			</result>
+		</action>
+		<action name="login" class="shiroLoginAction" method="login">
+			<result name="login">
+				/WEB-INF/jsp/base/login.jsp
+			</result>
+		</action>
+	<!-- 	<action name="logout" class="loginAction" method="logout">
+			<result name="logout" type="redirect">first.action</result>
+		</action> -->
+	</package>
+</struts>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="ypml" namespace="/ypml" extends="base">
+		<action name="*" class="ypxxAction" method="{1}">
+		
+			<result name="sysnc">/WEB-INF/jsp/business/ypml/rsyncypxx.jsp</result>
+			<result name="sysncsubmit" type="json">
+				<param name="root">processResult</param>
+			</result>
+			<result name="export">/WEB-INF/jsp/business/ypml/export.jsp</result>
+			<result name="importypxx">/WEB-INF/jsp/business/ypml/importypxx.jsp</result>
+		</action>
+	</package>
+</struts>

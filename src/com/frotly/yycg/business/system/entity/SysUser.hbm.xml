@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-4 21:43:11 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.frotly.yycg.business.system.entity.SysUser" table="SYS_USER" schema="FROTLY">
+        <comment>用户表</comment>
+        <id name="id" type="string">
+            <column name="ID" length="32" />
+            <generator class="uuid" />
+        </id>
+        <many-to-one name="userjd" class="com.frotly.yycg.business.system.entity.Userjd" fetch="join">
+            <column name="USERJDID" length="64"></column>
+        </many-to-one>
+        <many-to-one name="useryy" class="com.frotly.yycg.business.system.entity.Useryy" fetch="join">
+            <column name="USERYYID" length="64"></column>
+        </many-to-one>
+        <many-to-one name="usergys" class="com.frotly.yycg.business.system.entity.Usergys" fetch="join">
+            <column name="USERGYSID" length="64"></column>
+        </many-to-one>
+        <many-to-one name="dictinfoByGroupid" class="com.frotly.yycg.business.system.entity.Dictinfo" fetch="join">
+            <column name="GROUPID" length="32" not-null="true"></column>
+        </many-to-one>
+        <many-to-one name="dictinfoByUserstate" class="com.frotly.yycg.business.system.entity.Dictinfo" fetch="join">
+            <column name="USERSTATE" length="32" not-null="true"></column>
+        </many-to-one>
+        <set name="sysRoles" table="SYS_USER_ROLE" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="SYSUSERID" length="64" not-null="true"></column>
+            </key>
+            <many-to-many entity-name="com.frotly.yycg.business.system.entity.SysRole">
+                <column name="SYSROLEID" length="64" not-null="true"></column>
+            </many-to-many>
+        </set>
+        <property name="usercode" type="string">
+            <column name="USERCODE" length="20" not-null="true" unique="true"></column>
+        </property>
+        <property name="username" type="string">
+            <column name="USERNAME" length="128" not-null="true"></column>
+        </property>
+        <property name="pwd" type="string">
+            <column name="PWD" length="64" not-null="true"></column>
+        </property>
+        <property name="contact" type="string">
+            <column name="CONTACT" length="128"></column>
+        </property>
+        <property name="addr" type="string">
+            <column name="ADDR" length="256"></column>
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="64"></column>
+        </property>
+        <property name="remark" type="string">
+            <column name="REMARK" length="256"></column>
+        </property>
+        <property name="createtime" type="java.util.Date">
+            <column name="CREATETIME" length="7"></column>
+        </property>
+        <property name="sex" type="string">
+            <column name="SEX" length="4"></column>
+        </property>
+        <property name="phone" type="string">
+            <column name="PHONE" length="20"></column>
+        </property>
+        <property name="movephone" type="string">
+            <column name="MOVEPHONE" length="11"></column>
+        </property>
+        <property name="fax" type="string">
+            <column name="FAX" length="20"></column>
+        </property>
+        <property name="lastupdate" type="string">
+            <column name="LASTUPDATE" length="14"></column>
+        </property>
+        <property name="vchar1" type="string">
+            <column name="VCHAR1" length="300" />
+        </property>
+        <property name="vchar2" type="string">
+            <column name="VCHAR2" length="300" />
+        </property>
+        <property name="vchar3" type="string">
+            <column name="VCHAR3" length="300" />
+        </property>
+        <property name="vchar4" type="string">
+            <column name="VCHAR4" length="300" />
+        </property>
+        <property name="vchar5" type="string">
+            <column name="VCHAR5" length="300" />
+        </property>
+    </class>
+</hibernate-mapping>

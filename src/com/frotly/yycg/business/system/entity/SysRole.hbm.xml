@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-5 12:33:43 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.frotly.yycg.business.system.entity.SysRole" table="SYS_ROLE" schema="FROTLY">
+        <comment>系统角色表</comment>
+        <id name="id" type="string">
+            <column name="ID" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="64" not-null="true"></column>
+        </property>
+        <property name="groupid" type="string">
+            <column name="GROUPID" length="64" not-null="true"></column>
+        </property>
+        <property name="vchar1" type="string">
+            <column name="VCHAR1" length="64"></column>
+        </property>
+        <property name="vchar2" type="string">
+            <column name="VCHAR2" length="64"></column>
+        </property>
+        <property name="vchar3" type="string">
+            <column name="VCHAR3" length="64"></column>
+        </property>
+       <!--  <set name="sysUsers" table="SYS_USER_ROLE" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="SYSROLEID" length="64" not-null="true"></column>
+            </key>
+            <many-to-many entity-name="com.frotly.yycg.business.system.entity.SysUser">
+                <column name="SYSUSERID" length="64" not-null="true"></column>
+            </many-to-many>
+        </set> -->
+        <set name="sysPermissions" table="SYS_ROLE_PERMISSION" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ROLEID" length="32" not-null="true"></column>
+            </key>
+            <many-to-many entity-name="com.frotly.yycg.business.system.entity.SysPermission">
+                <column name="PERMISSIONID" length="32" not-null="true"></column>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

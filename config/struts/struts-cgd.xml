@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="cgd" namespace="/cgd" extends="base">
+		<action name="*" class="cgdAction" method="{1}">
+			<result name="add">/WEB-INF/jsp/business/cgd/add.jsp</result>
+			<!-- <result name="addresult" type="json">
+				<param name="root">processResult</param>
+			</result> -->
+			<result name="edit">/WEB-INF/jsp/business/cgd/edit.jsp</result>
+<!-- 			<result name="editsubmit" type="json">
+				<param name="root">processResult</param>
+			</result> -->
+			<result name="list">/WEB-INF/jsp/business/cgd/list.jsp</result>
+			<result name="listresult" type="json">
+				<param name="root">processResult</param>
+				<param name="includeProperties">total,rows\[\d+\]\.id,rows\[\d+\]\.mc,rows\[\d+\]\.cjtime,rows\[\d+\]\.xgtime,rows\[\d+\]\.tjtime,
+				rows\[\d+\]\.shtime,rows\[\d+\]\.dictinfoByZt\.info</param>
+			</result>
+			<result name="addcgdmx">/WEB-INF/jsp/business/cgd/addcgdmx.jsp</result>
+			<!-- <result name="addcgdmx_result" type="json">
+				<param name="root">processResult</param>
+			</result>
+			<result name="addcgdmx_submit" type="json">
+				<param name="root">processResult</param>
+			</result> -->
+			<result name="yycgdmx_result" type="json">
+				<param name="root">processResult</param>
+				<param name="includeProperties">total,rows\[\d+\]\.id,rows\[\d+\]\.yycgd\.id,rows\[\d+\]\.ypxx\.bm,rows\[\d+\]\.ypxx\.id,rows\[\d+\]\.ypxx\.jx,rows\[\d+\]\.ypxx\.gg,rows\[\d+\]\.ypxx\.zhxs,
+					rows\[\d+\]\.zbjg,rows\[\d+\]\.ypxx\.dictinfoByJyzt\.info,rows\[\d+\]\.jyjg,rows\[\d+\]\.cgl,rows\[\d+\]\.cgje,rows\[\d+\]\.dictinfoByCgzt\.info
+				</param>
+			</result>
+			<!-- <result name="savecgdmx" type="json">
+				<param name="root">processResult</param>
+			</result> -->
+			<result name="checklist">/WEB-INF/jsp/business/cgd/checklist.jsp</result>
+			<result name="checklist_result" type="json">
+				<param name="root">processResult</param>
+				<param name="includeProperties">total,rows\[\d+\]\.id,rows\[\d+\]\.mc,rows\[\d+\]\.cjtime,rows\[\d+\]\.xgtime,rows\[\d+\]\.tjtime,
+				rows\[\d+\]\.shtime,rows\[\d+\]\.dictinfoByZt\.info</param>
+			</result>
+			<result name="check">/WEB-INF/jsp/business/cgd/check.jsp</result>
+			
+			<result name="disposelist">/WEB-INF/jsp/business/cgd/disposelist.jsp</result>
+			<result name="disposelist_result" type="json">
+				<param name="root">processResult</param>
+				<param name="includeProperties">total,rows\[\d+\]\.id,rows\[\d+\]\.mc,rows\[\d+\]\.cjtime,rows\[\d+\]\.dictinfoByZt\.info,rows\[\d+\]\.useryy\.mc</param>
+			</result>
+			<result name="dispose">/WEB-INF/jsp/business/cgd/dispose.jsp</result>
+		</action>
+	</package>
+	<package name="cgdflow" namespace="/cgd/flow" extends="base">
+		<action name="*" class="cgdFlowAction" method="{1}">
+			<result name="tasklist">/WEB-INF/jsp/business/cgd/flow/tasklist.jsp</result>
+			<result name="tasklist_result" type="json">
+				<param name="root">processResult</param>
+				<param name="includeProperties">total,rows\[\d+\]\.taskId,rows\[\d+\]\.taskName,rows\[\d+\]\.taskUrl,rows\[\d+\]\.yycgdCustom\.id,rows\[\d+\]\.yycgdCustom\.mc,rows\[\d+\]\.yycgdCustom\.useryy\.mc,rows\[\d+\]\.yycgdCustom\.cjtime</param>
+			</result>
+			<result name="grouptasklist">/WEB-INF/jsp/business/cgd/flow/grouptasklist.jsp</result>
+			<result name="grouptasklist_result" type="json">
+				<param name="root">processResult</param>
+				<param name="includeProperties">total,rows\[\d+\]\.taskId,rows\[\d+\]\.taskName,rows\[\d+\]\.yycgdCustom\.id,rows\[\d+\]\.yycgdCustom\.mc,rows\[\d+\]\.yycgdCustom\.useryy\.mc,rows\[\d+\]\.yycgdCustom\.cjtime</param>
+			</result>
+		</action>
+	</package>
+</struts>

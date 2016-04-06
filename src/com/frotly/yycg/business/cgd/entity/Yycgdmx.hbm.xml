@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-10 14:17:06 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.frotly.yycg.business.cgd.entity.Yycgdmx" table="YYCGDMX" schema="FROTLY">
+        <comment>医院采购单明细表</comment>
+        <id name="id" type="string">
+            <column name="ID" length="32" />
+            <generator class="uuid" />
+        </id>
+        <many-to-one name="ypxx" class="com.frotly.yycg.business.ypml.entity.Ypxx" fetch="join">
+            <column name="YPXXID" length="32" not-null="true"></column>
+        </many-to-one>
+        <many-to-one name="dictinfoByCgzt" class="com.frotly.yycg.business.system.entity.Dictinfo" fetch="join">
+            <column name="CGZT" length="32" not-null="true"></column>
+        </many-to-one>
+        <many-to-one name="yycgd" class="com.frotly.yycg.business.cgd.entity.Yycgd" fetch="join">
+            <column name="YYCGDID" precision="22" scale="0" not-null="true"></column>
+        </many-to-one>
+        <property name="zbjg" type="java.lang.Float">
+            <column name="ZBJG" precision="126" scale="0" not-null="true"></column>
+        </property>
+        <property name="jyjg" type="java.lang.Float">
+            <column name="JYJG" precision="126" scale="0" not-null="true"></column>
+        </property>
+        <property name="cgl" type="java.lang.Integer">
+            <column name="CGL" precision="22" scale="0" not-null="true"></column>
+        </property>
+        <property name="cgje" type="java.lang.Float">
+            <column name="CGJE" precision="126" scale="0" not-null="true"></column>
+        </property>
+        <property name="vchar1" type="string">
+            <column name="VCHAR1" length="64" />
+        </property>
+        <property name="vchar2" type="string">
+            <column name="VCHAR2" length="64" />
+        </property>
+        <property name="vchar3" type="string">
+            <column name="VCHAR3" length="64" />
+        </property>
+        <property name="vchar4" type="string">
+            <column name="VCHAR4" length="128" />
+        </property>
+        <property name="vchar5" type="string">
+            <column name="VCHAR5" length="128" />
+        </property>
+    </class>
+</hibernate-mapping>
